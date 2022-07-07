@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Component/Login_screen.dart';
 import 'Component/RegisterScreen.dart';
+import 'Component/productlist.dart';
 import 'Component/user_model.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Auth',
-      home: LoginScreen(),
+      home: ProductList(),
     );
   }
 }
