@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mobileapp_p2/Component/productlist.dart';
+import 'package:mobileapp_p2/Component/IndexPage.dart';
 import 'package:mobileapp_p2/Component/todo.dart';
 
 import 'RegisterScreen.dart';
@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 if (user != null) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ProductList()),
+                    MaterialPageRoute(builder: (context) => IndexPage()),
                   );
                 }
                 else {
