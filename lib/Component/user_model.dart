@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 List<UserModel> userModelFromJson(String str) =>
-    List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
+    List<UserModel>.from((json.decode(str)["result"]["records"]).map((x) => UserModel.fromJson(x)));
 
 String userModelToJson(List<UserModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -10,16 +10,16 @@ class UserModel {
   UserModel({
     required this.id,
     required this.priceDate,
-    required this.prProdName,
-    required this.marketName,
-    required this.priceDay,
+    this.prProdName,
+    this.marketName,
+    this.priceDay,
   });
 
   int id;
   DateTime priceDate;
-  String prProdName;
-  String marketName;
-  double priceDay;
+  String? prProdName;
+  String? marketName;
+  double? priceDay;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
     id: json["_id"],
