@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:mobileapp_p2/controllers/product_controller.dart';
+import '../controllers/cart_controller.dart';
 import '../models/product_model.dart';
 class CatalogProducts extends StatelessWidget {
-  const CatalogProducts({Key? key}) : super(key: key);
+  final productController = Get.put(ProductController());
+  CatalogProducts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.builder(
-        itemCount: Product.products.length,
-        itemBuilder: (BuildContext context, int index){
-          return CatalogProductCard(index: index);
-        }
+    return Obx(() =>
+      Flexible(
+        child: ListView.builder(
+          itemCount: productController.products.length,
+          itemBuilder: (BuildContext context, int index){
+            return CatalogProductCard(index: index);
+          }
+        ),
       ),
     );
   }
 }
 
 class CatalogProductCard extends StatelessWidget {
+  final cartController = Get.put(CartController());
+  final ProductController productController = Get.find();
   final int index;
-  const CatalogProductCard({Key? key,
+  CatalogProductCard({Key? key,
   required this.index}) : super(key: key);
 
   @override
@@ -32,18 +41,18 @@ class CatalogProductCard extends StatelessWidget {
           CircleAvatar(
             radius: 40,
             backgroundImage: NetworkImage(
-              Product.products[index].imageUrl,
+              productController.products[index].imageUrl,
             ),
           ),
           SizedBox(width: 20),
           Expanded(
               child: Text(
-                Product.products[index].name,
+                productController.products[index].name,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
           ),
           Expanded(
-              child: Text('${Product.products[index].price}'),
+              child: Text('${productController.products[index].price}'),
           ),
           IconButton(
             onPressed: (){},

@@ -27,7 +27,6 @@ class CartProducts extends StatelessWidget {
 }
 
 
-
 class CartProductCard extends StatelessWidget {
   final CartController controller;
   final Product product;
@@ -70,7 +69,7 @@ class CartProductCard extends StatelessWidget {
           Text('${quantity}'),
           IconButton(
             onPressed: (){
-              controller.addProduct(product)
+              controller.addProduct(product);
             },
             icon: Icon(Icons.add_circle),
           )

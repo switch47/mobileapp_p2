@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 // import 'package:sample_user_listing/themes/color.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobileapp_p2/Component/RegisterScreen.dart';
 
 class IndexPage extends StatefulWidget {
   @override
@@ -64,31 +65,40 @@ class _IndexPageState extends State<IndexPage> {
       elevation: 1.5,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: ListTile(
-          title: Row(
-            children: <Widget>[
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(60/2),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RegisterScreen())
+            );
+          },
+          child: ListTile(
+            title: Row(
+              children: <Widget>[
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(60/2),
+                  ),
                 ),
-              ),
-              SizedBox(width: 20,),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width-140,
-                      child: Text(fullName,style: TextStyle(color: Colors.black,fontSize: 17),)),
-                  SizedBox(height: 10,),
-                  // Text(email.toString(),style: TextStyle(color: Colors.grey),)
-                ],
-              )
-            ],
+                SizedBox(width: 20,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width-140,
+                        child: Text(fullName,style: TextStyle(color: Colors.black,fontSize: 17),)),
+                    SizedBox(height: 10,),
+                    // Text(email.toString(),style: TextStyle(color: Colors.grey),)
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
+        )
+
       ),
     );
   }

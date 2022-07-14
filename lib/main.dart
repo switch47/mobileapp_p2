@@ -1,12 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'Component/IndexPage.dart';
 import 'Component/Login_screen.dart';
 import 'Component/RegisterScreen.dart';
 import 'Component/user_model.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  await Firebase.initializeApp();
+  runApp(GetMaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
