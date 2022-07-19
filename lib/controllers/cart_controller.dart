@@ -28,4 +28,8 @@ class CartController extends GetxController{
     }
   }
   get products => _products;
+
+  get productSubtotal => _products.entries.map((product) => product.key.price * product.value).toList();
+
+  get total => _products.entries.map((product) => product.key.price * product.value).toList().reduce((value, element) => value + element).toSringAsFiexed(2);
 }

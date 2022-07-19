@@ -38,12 +38,12 @@ class CatalogProductCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: NetworkImage(
-              productController.products[index].imageUrl,
-            ),
-          ),
+          // CircleAvatar(
+          //   radius: 40,
+          //   backgroundImage: NetworkImage(
+          //     productController.products[index].imageUrl,
+          //   ),
+          // ),
           SizedBox(width: 20),
           Expanded(
               child: Text(
@@ -53,6 +53,9 @@ class CatalogProductCard extends StatelessWidget {
           ),
           Expanded(
               child: Text('${productController.products[index].price}'),
+          ),
+          Expanded(
+            child: Text('${productController.products[index].price}'),
           ),
           IconButton(
             onPressed: (){},

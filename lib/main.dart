@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobileapp_p2/Component/catalog.dart';
 import 'Component/IndexPage.dart';
 import 'Component/Login_screen.dart';
 import 'Component/RegisterScreen.dart';

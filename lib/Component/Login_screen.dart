@@ -4,7 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:mobileapp_p2/Component/IndexPage.dart';
 import 'package:mobileapp_p2/Component/todo.dart';
 
+import 'MainPage.dart';
 import 'RegisterScreen.dart';
+import 'catalog.dart';
 
 
 
@@ -105,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
               if (user != null) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => IndexPage()),
+                  MaterialPageRoute(builder: (context) => MainPage()),
                 );
               }
               else {

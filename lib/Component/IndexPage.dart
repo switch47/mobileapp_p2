@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:sample_user_listing/themes/color.dart';
 import 'package:http/http.dart' as http;
@@ -11,6 +14,10 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
+  late FirebaseAuth _auth;
+  late FirebaseFirestore _firestore;
+  late String loggedInUser;
+
   List users = [];
   bool isLoading = false;
   @override
@@ -18,7 +25,22 @@ class _IndexPageState extends State<IndexPage> {
     // TODO: implement initState
     super.initState();
     this.fetchUser();
+    initFirebase();
   }
+
+  void initFirebase() async {
+    await Firebase.initializeApp();
+    _auth = FirebaseAuth.instance;
+    _firestore = FirebaseFirestore.instance;
+
+    // await _auth.signInWithEmailAndPassword(
+    //   email: "kongkiatacp@hotmail.com", password: "bank47630"
+    // );
+
+    loggedInUser = _auth.currentUser?.email ?? 'none';
+    print(loggedInUser);
+  }
+
   fetchUser() async {
     setState(() {
       isLoading = true;
@@ -59,6 +81,8 @@ class _IndexPageState extends State<IndexPage> {
 
   Widget getCard(item){
     var fullName = item["PR_PROD_NAME"];
+    double price = item["PRICE_DAY"];
+    var market = item["MARKET_NAME"];
     //var email = item['email'];
     // var profileUrl = item['picture']['large'];
     return Card(
@@ -66,12 +90,18 @@ class _IndexPageState extends State<IndexPage> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => RegisterScreen())
-            );
-          },
+          // onTap: () {
+          //   // Navigator.push(
+          //   //   context,
+          //   //   MaterialPageRoute(builder: (context) => RegisterScreen())
+          //   // );
+          //   Map<String, dynamic> data = {
+          //     'name': fullName,
+          //     'price': price,
+          //     'market': market
+          //   };
+          //   _firestore.collection('products').add(data);
+          // },
           child: ListTile(
             title: Row(
               children: <Widget>[
@@ -89,7 +119,25 @@ class _IndexPageState extends State<IndexPage> {
                   children: <Widget>[
                     SizedBox(
                         width: MediaQuery.of(context).size.width-140,
-                        child: Text(fullName,style: TextStyle(color: Colors.black,fontSize: 17),)),
+                        child: Column(
+                          children: [
+                            Text(fullName,style: TextStyle(color: Colors.black,fontSize: 17)),
+                            IconButton(onPressed: () {
+
+                              Map<String, dynamic> data = {
+                                'name': fullName,
+                                'price': price,
+                                'market': market,
+                              };
+                              // _firestore.collection("users").doc(loggedInUser).collection('products').add(data);
+                              _firestore.collection('products').add(data);
+                            },
+                                icon: Icon(Icons.add_circle),
+                            )
+                          ],
+                        )
+                        // child: Text(fullName,style: TextStyle(color: Colors.black,fontSize: 17),)
+                    ),
                     SizedBox(height: 10,),
                     // Text(email.toString(),style: TextStyle(color: Colors.grey),)
                   ],
