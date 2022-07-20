@@ -9,6 +9,9 @@ import 'package:http/http.dart' as http;
 import 'package:mobileapp_p2/Component/RegisterScreen.dart';
 
 class IndexPage extends StatefulWidget {
+  late final String email;
+  late final String password;
+
   @override
   _IndexPageState createState() => _IndexPageState();
 }
@@ -36,6 +39,7 @@ class _IndexPageState extends State<IndexPage> {
     // await _auth.signInWithEmailAndPassword(
     //   email: "kongkiatacp@hotmail.com", password: "bank47630"
     // );
+    await _auth.signInWithEmailAndPassword(email: widget.email, password: widget.password);
 
     loggedInUser = _auth.currentUser?.email ?? 'none';
     print(loggedInUser);
@@ -63,7 +67,7 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Listing Users"),
+        title: Text("All Products"),
       ),
       body: getBody(),
     );
@@ -81,7 +85,7 @@ class _IndexPageState extends State<IndexPage> {
 
   Widget getCard(item){
     var fullName = item["PR_PROD_NAME"];
-    double price = item["PRICE_DAY"];
+    var price = item["PRICE_DAY"];
     var market = item["MARKET_NAME"];
     //var email = item['email'];
     // var profileUrl = item['picture']['large'];
