@@ -31,12 +31,12 @@ class _mainPageState extends State<MainPage> {
               items: const [
                 BottomNavigationBarItem(
                   label: 'Home',
-                  icon: Icon(Icons.home,color: Colors.blue),
+                  icon: Icon(Icons.home,color: Colors.green),
                   backgroundColor: Colors.white,
                 ),
                 BottomNavigationBarItem(
                     label: 'Cart',
-                    icon: Icon(Icons.shopping_cart,color: Colors.blue),
+                    icon: Icon(Icons.shopping_cart,color: Colors.green),
                     backgroundColor: Colors.white
                 ),
               ]

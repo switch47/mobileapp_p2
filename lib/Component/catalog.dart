@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobileapp_p2/widgets/cart_total.dart';
-import '../widgets/cart_screen.dart';
-import '../widgets/catalog_products.dart';
+
 import 'CartPage.dart';
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({Key? key}) : super(key: key);
@@ -10,7 +8,8 @@ class CatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Cart")),
+      appBar: AppBar(title: Text("Cart"), backgroundColor: Colors.green,),
+      backgroundColor: Color(0xFFCCFF90),
       body: SafeArea(
         child: Column(
           children: [

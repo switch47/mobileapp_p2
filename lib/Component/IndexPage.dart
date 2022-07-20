@@ -68,6 +68,7 @@ class _IndexPageState extends State<IndexPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("All Products"),
+        backgroundColor: Colors.green,
       ),
       body: getBody(),
     );
@@ -87,9 +88,14 @@ class _IndexPageState extends State<IndexPage> {
     var fullName = item["PR_PROD_NAME"];
     var price = item["PRICE_DAY"];
     var market = item["MARKET_NAME"];
+    num totalPrice = 0;
     //var email = item['email'];
     // var profileUrl = item['picture']['large'];
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0)
+      ),
+      color: Color(0xFFCCFF90),
       elevation: 1.5,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -107,16 +113,21 @@ class _IndexPageState extends State<IndexPage> {
           //   _firestore.collection('products').add(data);
           // },
           child: ListTile(
+            leading: Icon(
+              Icons.food_bank_outlined,
+              color: Color(0xFF40ADF0),
+              size: 40,
+            ),
             title: Row(
               children: <Widget>[
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(60/2),
-                  ),
-                ),
+                // Container(
+                //   width: 60,
+                //   height: 60,
+                //   decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.circular(60/2),
+                //   ),
+                // ),
                 SizedBox(width: 20,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,16 +138,21 @@ class _IndexPageState extends State<IndexPage> {
                           children: [
                             Text(fullName + "  ${price} Baht",style: TextStyle(color: Colors.black,fontSize: 17)),
                             IconButton(onPressed: () {
-
+                              // totalPrice = totalPrice + price;
                               Map<String, dynamic> data = {
                                 'name': fullName,
                                 'price': price,
                                 'market': market,
+                                // 'totalPrice': totalPrice,
                               };
                               // _firestore.collection("users").doc(loggedInUser).collection('products').add(data);
                               _firestore.collection('products').add(data);
+                              // Map<String, dynamic> data2 = {
+                              //   'totalPrice': totalPrice,
+                              // };
+                              // _firestore.collection('totalPrice').add(data2);
                             },
-                                icon: Icon(Icons.add_circle),
+                                icon: Icon(Icons.add_circle, color: Colors.blue),
                             )
                           ],
                         )

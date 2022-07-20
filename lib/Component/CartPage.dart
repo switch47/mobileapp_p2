@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mobileapp_p2/controllers/product_controller.dart';
-import '../controllers/cart_controller.dart';
 import '../models/product_model.dart';
 
 class CartPage extends StatefulWidget {
@@ -70,6 +69,9 @@ class CatalogProductCard extends State<ProductCard> {
     }
   }
 
+  // void total() async {
+  //   totalPrice = (totalPrice + productController.products[index].price) as int;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -98,12 +100,16 @@ class CatalogProductCard extends State<ProductCard> {
           // Expanded(
           //   child: Text('${productController.products[index].price}'),
           // ),
+          // Expanded(
+          //   child: Text(totalPrice.toString())
+          // ),
           IconButton(
             onPressed: () async {
               deleteAllProduct();
             },
             icon: Icon(
               Icons.delete,
+              color: Colors.red,
             ),
           ),
         ],
