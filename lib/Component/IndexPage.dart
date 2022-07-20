@@ -125,7 +125,7 @@ class _IndexPageState extends State<IndexPage> {
                         width: MediaQuery.of(context).size.width-140,
                         child: Column(
                           children: [
-                            Text(fullName,style: TextStyle(color: Colors.black,fontSize: 17)),
+                            Text(fullName + "  ${price} Baht",style: TextStyle(color: Colors.black,fontSize: 17)),
                             IconButton(onPressed: () {
 
                               Map<String, dynamic> data = {

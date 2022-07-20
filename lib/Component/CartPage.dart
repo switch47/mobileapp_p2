@@ -93,7 +93,7 @@ class CatalogProductCard extends State<ProductCard> {
             ),
           ),
           Expanded(
-            child: Text('${productController.products[index].price}'),
+            child: Text('   ${productController.products[index].price} Baht'),
           ),
           // Expanded(
           //   child: Text('${productController.products[index].price}'),
